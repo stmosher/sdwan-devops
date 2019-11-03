@@ -22,7 +22,7 @@ pipeline {
         stage('Clean Previous Deployment') {
             steps {
                 echo 'Running clean-vmware.yml...'
-                ansiblePlaybook disableHostKeyChecking: true, tags: 'control,edges', playbook: 'clean-vmware.yml'
+                ansiblePlaybook disableHostKeyChecking: true, inventory: 'inventory/deployments', tags: 'control,edges', playbook: 'clean-vmware.yml'
                 cleanWs()
             }
         }
