@@ -19,13 +19,13 @@ pipeline {
         DEFAULT_LOCAL_TMP = "${WORKSPACE}/ansible"
     }
     stages {
-        stage('Clean Previous Deployment') {
-            steps {
-                echo 'Running clean-vmware.yml...'
-                ansiblePlaybook disableHostKeyChecking: true, inventory: 'inventory/deployments', tags: 'control,edges', playbook: 'clean-vmware.yml'
-                cleanWs()
-            }
-        }
+//        stage('Clean Previous Deployment') {
+//            steps {
+//                echo 'Running clean-vmware.yml...'
+//                ansiblePlaybook disableHostKeyChecking: true, inventory: 'inventory/deployments', tags: 'control,edges', playbook: 'clean-vmware.yml'
+//                cleanWs()
+//            }
+//        }
         stage('Prep New Environment') {
             steps {
                  // GIT submodule recursive checkout
