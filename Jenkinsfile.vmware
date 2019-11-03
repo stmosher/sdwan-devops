@@ -70,7 +70,7 @@ pipeline {
 /*
     post {
         always {
-            ansiblePlaybook disableHostKeyChecking: true, tags: 'control,edges', playbook: 'clean-vmware.yml'
+            ansiblePlaybook disableHostKeyChecking: true, inventory: 'inventory/deployments', tags: 'control,edges', playbook: 'clean-vmware.yml'
             cleanWs()
         }
     }
