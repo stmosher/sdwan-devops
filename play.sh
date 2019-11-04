@@ -37,6 +37,15 @@ fi
 if [[ ! -z "$TF_VAR_vsphere_server" ]]; then
    OPTIONS="$OPTIONS --env TF_VAR_vsphere_server=$TF_VAR_vsphere_server"
 fi
+if [[ ! -z "$AWS_ACCESS_KEY_ID" ]]; then
+   OPTIONS="$OPTIONS --env AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID"
+fi
+if [[ ! -z "$AWS_SECRET_ACCESS_KEY" ]]; then
+   OPTIONS="$OPTIONS --env AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY"
+fi
+if [[ ! -z "$AWS_DEFAULT_REGION" ]]; then
+   OPTIONS="$OPTIONS --env AWS_DEFAULT_REGION=$AWS_DEFAULT_REGION"
+fi
 
 OPTIONS="$OPTIONS --env ANSIBLE_ROLES_PATH=/ansible/roles"
 
