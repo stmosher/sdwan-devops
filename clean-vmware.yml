@@ -14,7 +14,7 @@
         project_path: 'terraform-sdwan/vmware'
         state: absent
         workspace: control
-        variables_file: control.tfvars
+#        variables_file: control.tfvars
       tags:
         - control
         - never
@@ -24,7 +24,7 @@
         project_path: 'terraform-sdwan/vmware'
         state: absent
         workspace: edges
-        variables_file: edges.tfvars
+#        variables_file: edges.tfvars
       tags:
         - edges
         - never
