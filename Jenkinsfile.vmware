@@ -14,7 +14,7 @@ pipeline {
         TF_VAR_vsphere_password = credentials('cpn-rtp-vc1-password')
         TF_VAR_vsphere_server = credentials('cpn-rt-vc1-host')
         VMANAGE_ORG = credentials('vmware-vmanage-org')
-        VIPTELA_ORG = credentials('vmware-vmanage-org')
+//        VIPTELA_ORG = credentials('vmware-vmanage-org')
         HOME = "${WORKSPACE}"
         DEFAULT_LOCAL_TMP = "${WORKSPACE}/ansible"
         AWS_ACCESS_KEY_ID = credentials('jenkins-aws-access-key')
