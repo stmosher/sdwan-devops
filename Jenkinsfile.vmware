@@ -25,12 +25,8 @@ pipeline {
             steps {
                 echo 'Running clean-vmware.yml...'
                 ansiblePlaybook disableHostKeyChecking: true, inventory: 'inventory/jenkins', tags: 'control,edges', playbook: 'clean-vmware.yml'
-            }
-        }
-        stage('Clean Jenkins Workspace ') {
-           steps {
                 cleanWs()
-           }
+            }
         }
         stage('Prep New Environment') {
             steps {
