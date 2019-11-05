@@ -7,7 +7,7 @@ pipeline {
     }
     options {
         disableConcurrentBuilds()
-        lock resource: 'jenkins_sdwan'
+        lock resource: 'jenkins_sdwan_vmware'
     }
     environment {
         TF_VAR_vsphere_user = credentials('cpn-rtp-vc1-username')
@@ -25,8 +25,12 @@ pipeline {
             steps {
                 echo 'Running clean-vmware.yml...'
                 ansiblePlaybook disableHostKeyChecking: true, inventory: 'inventory/jenkins', tags: 'control,edges', playbook: 'clean-vmware.yml'
-                cleanWs()
             }
+        }
+        stage('Clean Jenkins Workspace ') {
+           steps {
+                cleanWs()
+           }
         }
         stage('Prep New Environment') {
             steps {
@@ -69,7 +73,6 @@ pipeline {
         stage('Configure VMWare Edges') {
             steps {
                 echo 'Configure Edges...'
-                withCredentials([file(credentialsId: 'viptela-serial-file', variable: 'VIPTELA_SERIAL_FILE')]) {
                     ansiblePlaybook disableHostKeyChecking: true, inventory: 'inventory/jenkins', playbook: 'deploy-vmware-edges.yml'
                 }
             }
