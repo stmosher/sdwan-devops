@@ -20,18 +20,18 @@ pipeline {
         AWS_SECRET_ACCESS_KEY = credentials('jenkins-aws-secret-key')
         AWS_DEFAULT_REGION = "us-east-1"
     }
-    stages {
-//        stage('Clean Jenkins Workspace') {
-//            steps {
-//                cleanWs()
-//            }
-//        }        
-//        stage('Clean Previous Deployment') {
-//            steps {
-//                echo 'Running clean-vmware.yml...'
-//                ansiblePlaybook disableHostKeyChecking: true, inventory: 'inventory/jenkins', tags: 'control,edges', playbook: 'clean-vmware.yml'
-//            }
-//        }
+    stages {      
+        stage('Clean Previous Deployment') {
+            steps {
+                echo 'Running clean-vmware.yml...'
+                ansiblePlaybook disableHostKeyChecking: true, inventory: 'inventory/jenkins', tags: 'control,edges', playbook: 'clean-vmware.yml'
+            }
+        }
+        stage('Clean Jenkins Workspace') {
+            steps {
+                cleanWs()
+            }
+        }  
         stage('Prep New Environment') {
             steps {
                  // GIT submodule recursive checkout
