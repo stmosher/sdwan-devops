@@ -25,15 +25,11 @@ pipeline {
             steps {
                 cleanWs()
             }
-        }        stage('Clean Previous Deployment') {
+        }        
+        stage('Clean Previous Deployment') {
             steps {
                 echo 'Running clean-vmware.yml...'
                 ansiblePlaybook disableHostKeyChecking: true, inventory: 'inventory/jenkins', tags: 'control,edges', playbook: 'clean-vmware.yml'
-                cleanWs()
-            }
-        }
-        stage('Clean Jenkins Workspace') {
-            steps {
                 cleanWs()
             }
         }
