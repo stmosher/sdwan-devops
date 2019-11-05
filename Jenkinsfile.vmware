@@ -70,7 +70,6 @@ pipeline {
             steps {
                 echo 'Configure Edges...'
                     ansiblePlaybook disableHostKeyChecking: true, inventory: 'inventory/jenkins', playbook: 'deploy-vmware-edges.yml'
-                }
             }
         }
     }
